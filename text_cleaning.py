@@ -1,14 +1,18 @@
 import pandas as pd
 import re
 import os
+import platform
 import nltk
 from nltk.corpus import stopwords, wordnet
 from nltk.tokenize import word_tokenize
 from nltk import pos_tag
 from nltk.stem import WordNetLemmatizer
 
-# Ensure NLTK uses the local data directory
-nltk.data.path.append(os.path.expanduser("~/nltk_data"))
+# Add the appropriate NLTK data path depending on OS
+if platform.system() == "Windows":
+    nltk.data.path.append(os.path.join(os.environ["APPDATA"], "nltk_data"))
+else:  # macOS / Linux
+    nltk.data.path.append(os.path.expanduser("~/nltk_data"))
 
 # Initialize the standard NLTK stopword list for English
 stop_words = set(stopwords.words("english"))
@@ -19,7 +23,7 @@ stop_words.update([
     'would', 'could', 'also', 'get', 'tell', 'day', 'minute',
     'hour', 'take', 'good', 'one',                                  
      # Airline-related terms
-    'british', 'airways', 'airline', 'flight', 'fly', 'air', 'plane',
+    'british', 'airways', 'airway', 'airline', 'flight', 'fly', 'air', 'plane',
     # Location/airport-specific terms
     'lhr', 'heathrow', 'gatwick', 'london'
 ])
