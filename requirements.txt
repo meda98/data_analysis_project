@@ -1,9 +1,5 @@
-#### Required modules for Data Analysis of BA Airline Reviews ####
-
-# Installation: pip install -r requirements.txt
-
-pandas
-numpy
-scikit-learn
-nltk
-gensim
+gensim==4.3.3
+nltk==3.9.1
+numpy==1.26.2
+pandas==2.2.3
+scikit-learn==1.6.1
