@@ -8,11 +8,11 @@ from nltk.tokenize import word_tokenize
 from nltk import pos_tag
 from nltk.stem import WordNetLemmatizer
 
-# Add the appropriate NLTK data path depending on OS
-if platform.system() == "Windows":
-    nltk.data.path.append(os.path.join(os.environ["APPDATA"], "nltk_data"))
-else:  # macOS / Linux
-    nltk.data.path.append(os.path.expanduser("~/nltk_data"))
+# Get the path of the directory where the project is located
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
+# Tell NLTK to look for its data files in the subfolder "nltk_data"
+nltk.data.path.append(os.path.join(BASE_DIR, "nltk_data"))
 
 # Initialize the standard NLTK stopword list for English
 stop_words = set(stopwords.words("english"))
